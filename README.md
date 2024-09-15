@@ -2,5 +2,4 @@
 <h2>TSRT</h2>
 A 3d Engine made by openGL
 
-<h2>Tesseract logo</h2>
-![Tesseract Logo](https://github.com/user-attachments/assets/9b40e196-ff32-4a9b-98f7-4af508949b13)
+![image alt](https://github.com/KolKemboi/Tesseract-Engine/blob/d815498972a5088c2609aae917e9292a9fde8a02/Tesseract%20Logo.png)
