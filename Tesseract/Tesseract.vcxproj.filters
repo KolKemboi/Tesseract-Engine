@@ -60,6 +60,21 @@
     <ClInclude Include="UI\MaterialEditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Model\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inputs\Inputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">
@@ -95,6 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assimp-vc140-mt.dll" />
+    <None Include="Shaders\modelShader.vert" />
+    <None Include="Shaders\modelShader.frag" />
+    <None Include="Shaders\lightShader.vert" />
+    <None Include="Shaders\lightShader.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Logo.png">
