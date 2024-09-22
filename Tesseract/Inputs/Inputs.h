@@ -16,6 +16,10 @@ namespace TsrtInputs
 			this->window = window;
 			this->keyboardCallback(this->keyboard);
 		}
+		std::unordered_map<const char*, int> getKey()
+		{
+			return keyboard;
+		}
 
 
 	private:
