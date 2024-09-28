@@ -2,42 +2,28 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <unordered_map>
+#include <iostream>
+#include <algorithm>
 
-
-//re-write this class properly
 namespace TsrtInputs
 {
-	class Inputs
-	{
-	public:
-		Inputs(GLFWwindow* window)
-		{
-			this->window = window;
-			this->keyboardCallback(this->keyboard);
-		}
-		std::unordered_map<const char*, int> getKey()
-		{
-			return keyboard;
-		}
+    class InputHandler
+    {
+    public:
+        explicit InputHandler(GLFWwindow* window);
+        ~InputHandler();
 
+        void initializeCallbacks();
+        const char* keyPressed() const;
 
-	private:
-		bool keys[1024];
-		GLFWwindow* window;
-		std::unordered_map<const char*, int> keyboard;
-		std::unordered_map<const char*, int> mouse;
+        static InputHandler* getInstance() { return instance; }
 
-		void keyboardCallback(std::unordered_map<const char*, int> keyboard)
-		{
-			keyboard["W"] = glfwGetKey(this->window, GLFW_KEY_W);
-			keyboard["A"] = glfwGetKey(this->window, GLFW_KEY_A);
-			keyboard["S"] = glfwGetKey(this->window, GLFW_KEY_S);
-			keyboard["D"] = glfwGetKey(this->window, GLFW_KEY_D);
-		}
-		void mouseCallback(std::unordered_map<const char*, int> mouse)
-		{
+    private:
+        bool keys[1024]{};
+        GLFWwindow* window;
 
-		}
-	};
+        static InputHandler* instance;
+
+        static void keyboardListener(GLFWwindow* window, int key, int scancode, int action, int mode);
+    };
 }

@@ -51,8 +51,8 @@ namespace TsrtEngine
 		std::unique_ptr<TsrtUI::SceneOutliner> sceneOutliner;
 		std::unique_ptr<TsrtUI::Viewport> viewport;
 		std::unique_ptr<TsrtUI::MaterialEditor> materialEditor;
-		std::unique_ptr<TsrtInputs::Inputs> inputs;
-		
+		std::unique_ptr<TsrtInputs::InputHandler> inputsHandler;
+
 		GLFWwindow* window;
 		
 		const unsigned int width = 800, height = 800;
@@ -103,13 +103,14 @@ namespace TsrtEngine
 			this->sceneOutliner = std::make_unique<TsrtUI::SceneOutliner>();
 			this->materialEditor = std::make_unique<TsrtUI::MaterialEditor>();
 
+			this->inputsHandler = std::make_unique<TsrtInputs::InputHandler>(this->window);
+
 		}
 		void runEngine()
 		{
 			while (!(glfwWindowShouldClose(this->window)))
 			{
 				//LOOK FOR KEY PRESSES
-				this->inputs = std::make_unique<TsrtInputs::Inputs>(this->window);
 
 				glClearColor(0.2f, 0.1f, 0.3f, 1.0f);
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
