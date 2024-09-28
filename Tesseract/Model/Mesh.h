@@ -8,6 +8,7 @@
 #include <sstream>
 #include <vector>
 
+#include "../Shaders/Shader.h"
 
 namespace TsrtMesh
 {
@@ -16,8 +17,6 @@ namespace TsrtMesh
 		glm::vec3 Position;
 		glm::vec3 Normal;
 		glm::vec2 TexCoords;
-		glm::vec3 Tangents;
-		glm::vec3 Bitangents;
 	};
 
 	struct Texture
@@ -28,12 +27,18 @@ namespace TsrtMesh
 	class Mesh
 	{
 	public:
-		Mesh()
-		{
+		unsigned int _vao;
+		std::vector<Vertex> _vertices;
+		std::vector<unsigned int> _indices;
 
-		}
+		Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
+		void Draw(TsrtShader::Shader& shader);
 
 	private:
+		unsigned int _vbo, _ebo;
+
+		void setupMesh();
+		void drawMesh(TsrtShader::Shader& shader);
 
 	};
 }

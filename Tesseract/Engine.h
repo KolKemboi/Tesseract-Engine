@@ -116,13 +116,13 @@ namespace TsrtEngine
 
 				//UI SETUP
 				this->UI->createNewFrame();
-				this->UI->setDockable();
+				//this->UI->setDockable();
 				
 				//UI ELEMENTS
-				this->viewport->RendeViewport();
+				//this->viewport->RendeViewport();
 				this->propertiesPanel->RenderPropertiesPanel();
-				this->sceneOutliner->RendeSceneOutliner();
-				this->materialEditor->RenderMaterialEditor();
+				/*this->sceneOutliner->RendeSceneOutliner();
+				this->materialEditor->RenderMaterialEditor();*/
 
 				//UI RENDERING
 				this->UI->render();
