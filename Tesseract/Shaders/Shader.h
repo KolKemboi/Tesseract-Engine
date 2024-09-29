@@ -9,6 +9,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 
 
@@ -18,37 +19,32 @@ namespace TsrtShader
 	{
 	public:
 
-		Shader(const char* meshId)
-		{
+		Shader(const char* meshId);
 
-			if (std::strcmp(meshId, "object") == 0)
-			{
-				std::string objectVert = "objectShader.vert";
-				std::string objectFrag = "objectShader.frag";
-			}
-			else if (std::strcmp(meshId, "light") == 0)
-			{
-				std::string lightVert = "lightShader.vert";
-				std::string lightFrag = "lightShader.frag";
-			}
-			//load the vert and frag files
+		unsigned int getShader();
 
-			//create the shaders
+        void setBool(const std::string& name, bool value) const;
+        void setInt(const std::string& name, int value) const;
+        void setFloat(const std::string& name, float value) const;
+        void setVec2(const std::string& name, const glm::vec2& value) const;
+        void setVec2(const std::string& name, float x, float y) const;
+        void setVec3(const std::string& name, const glm::vec3& value) const;
+        void setVec3(const std::string& name, float x, float y, float z) const;
+        void setVec4(const std::string& name, const glm::vec4& value) const;
+        void setVec4(const std::string& name, float x, float y, float z, float w) const;
+        void setMat2(const std::string& name, const glm::mat2& mat) const;
+        void setMat3(const std::string& name, const glm::mat3& mat) const;
+		void setMat4(const std::string& name, const glm::mat4& mat) const;
 
-
-		}
-
-		unsigned int getShader()
-		{
-			return this->shaderProgram;
-		}
+		void DestroyShader();
 
 	private:
-		unsigned int shaderProgram, vertex, fragment;
+		unsigned int _shaderProgram, _vertex, _fragment;
 
-		void checkShaderError(unsigned int shader, const char* type)
-		{
-
-		}
+		const char* vertexFile;
+		const char* fragmentFile;
+		void checkShaderError(unsigned int shader, const char* type);
+		void createShaders(const char* vertexFile, const char* fragmentFile);
+		std::string readShadersFromFile(const char* filename);
 	};
 }

@@ -17,6 +17,8 @@
 //MODEL LOADING -> USES THE MESH NAMESPACE AS WE ARE LOADING A MESH 
 #include "Model/Model.h"
 
+//SHADER CLASS
+#include "Shaders/Shader.h"
 
 //CAMERA CLASS
 #include "Camera/Camera.h"
@@ -46,12 +48,13 @@ namespace TsrtEngine
 
 	private:
 		//UNIQUE PTRS TO THE UI
-		std::unique_ptr<TsrtUI::tsrtUI> UI;
-		std::unique_ptr<TsrtUI::PropertiesPanel> propertiesPanel;
-		std::unique_ptr<TsrtUI::SceneOutliner> sceneOutliner;
-		std::unique_ptr<TsrtUI::Viewport> viewport;
-		std::unique_ptr<TsrtUI::MaterialEditor> materialEditor;
-		std::unique_ptr<TsrtInputs::InputHandler> inputsHandler;
+		std::shared_ptr<TsrtUI::tsrtUI> UI;
+		std::shared_ptr<TsrtUI::PropertiesPanel> propertiesPanel;
+		std::shared_ptr<TsrtUI::SceneOutliner> sceneOutliner;
+		std::shared_ptr<TsrtUI::Viewport> viewport;
+		std::shared_ptr<TsrtUI::MaterialEditor> materialEditor;
+
+		std::unique_ptr<TsrtShader::Shader> modelShader;
 
 		GLFWwindow* window;
 		
@@ -97,13 +100,14 @@ namespace TsrtEngine
 
 			
 			//CREATES THE UI
-			this->UI = std::make_unique<TsrtUI::tsrtUI>(this->window, "#version 330");
-			this->propertiesPanel = std::make_unique<TsrtUI::PropertiesPanel>();
-			this->viewport = std::make_unique<TsrtUI::Viewport>();
-			this->sceneOutliner = std::make_unique<TsrtUI::SceneOutliner>();
-			this->materialEditor = std::make_unique<TsrtUI::MaterialEditor>();
+			this->UI = std::make_shared<TsrtUI::tsrtUI>(this->window, "#version 330");
+			this->propertiesPanel = std::make_shared<TsrtUI::PropertiesPanel>();
+			this->viewport = std::make_shared<TsrtUI::Viewport>();
+			this->sceneOutliner = std::make_shared<TsrtUI::SceneOutliner>();
+			this->materialEditor = std::make_shared<TsrtUI::MaterialEditor>();
 
-			this->inputsHandler = std::make_unique<TsrtInputs::InputHandler>(this->window);
+			this->modelShader = std::make_unique<TsrtShader::Shader>("OBJECT");
+
 
 		}
 		void runEngine()
@@ -114,6 +118,15 @@ namespace TsrtEngine
 
 				glClearColor(0.2f, 0.1f, 0.3f, 1.0f);
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+				this->modelShader->getShader();
+
+
+
+
+
+
+
 
 				//UI SETUP
 				this->UI->createNewFrame();

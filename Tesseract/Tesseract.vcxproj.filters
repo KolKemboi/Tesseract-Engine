@@ -113,16 +113,16 @@
     <ClCompile Include="Model\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Inputs\Inputs.cpp">
+    <ClCompile Include="Shaders\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="assimp-vc140-mt.dll" />
-    <None Include="Shaders\modelShader.vert" />
-    <None Include="Shaders\modelShader.frag" />
-    <None Include="Shaders\lightShader.vert" />
     <None Include="Shaders\lightShader.frag" />
+    <None Include="Shaders\lightShader.vert" />
+    <None Include="Shaders\modelShader.frag" />
+    <None Include="Shaders\modelShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Logo.png">
