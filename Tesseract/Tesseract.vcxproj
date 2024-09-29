@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Camera\Camera.h" />
-    <ClInclude Include="Engine.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_glfw.h" />
@@ -161,7 +160,6 @@
     <ClInclude Include="UI\Viewport.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="App.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
@@ -177,10 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assimp-vc140-mt.dll" />
-    <None Include="Shaders\lightShader.frag" />
-    <None Include="Shaders\lightShader.vert" />
-    <None Include="Shaders\modelShader.frag" />
-    <None Include="Shaders\modelShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Logo.png" />

@@ -42,9 +42,6 @@
     <ClInclude Include="imgui\imstb_truetype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UI\TsrtUI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -104,9 +101,6 @@
     <ClCompile Include="stb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Model\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -119,10 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assimp-vc140-mt.dll" />
-    <None Include="Shaders\lightShader.frag" />
-    <None Include="Shaders\lightShader.vert" />
-    <None Include="Shaders\modelShader.frag" />
-    <None Include="Shaders\modelShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Logo.png">
