@@ -14,14 +14,14 @@ namespace Tsrt
 		glm::vec3 Normal;
 	};
 
-	class TsrtMesh
+	class Mesh
 	{
 	public:
 		unsigned int _vao;
 		std::vector<Vertex> _vertices;
 		std::vector<unsigned int> _indices;
 
-		TsrtMesh(std::vector<Vertex> _vertices, std::vector<unsigned int> _indices);
+		Mesh(std::vector<Vertex> _vertices, std::vector<unsigned int> _indices);
 		void MeshDestroyer();
 		void DrawMesh();
 

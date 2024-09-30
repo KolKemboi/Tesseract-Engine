@@ -10,10 +10,10 @@
 
 namespace Tsrt
 {
-	class TsrtModel
+	class Model
 	{
 	public:
-		TsrtModel(std::string path);
+		Model(std::string path);
 		void ModelDestroyer();
 		void DrawModel();
 
@@ -21,6 +21,6 @@ namespace Tsrt
 
 		void loadModel(std::string path);
 		void processNode(aiNode* node, const aiScene* scene);
-		TsrtMesh processMesh(aiMesh* mesh, const aiScene* scene);
+		Mesh processMesh(aiMesh* mesh, const aiScene* scene);
 	};
 }

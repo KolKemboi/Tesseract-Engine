@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{c199f404-a56d-4fba-ae4d-76e18cb9bcaa}</ProjectGuid>
+    <ProjectGuid>{ca5d96a5-188a-49f2-bf54-0a7db50de4e2}</ProjectGuid>
     <RootNamespace>Tesseract</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
