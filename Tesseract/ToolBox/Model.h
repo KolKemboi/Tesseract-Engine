@@ -10,17 +10,18 @@
 
 namespace Tsrt
 {
-	class TsrtModel
+	class Model
 	{
 	public:
-		TsrtModel(std::string path);
+		std::vector <Mesh> m_meshes;
+		Model(std::string const& path);
 		void ModelDestroyer();
 		void DrawModel();
 
 	private:
 
-		void loadModel(std::string path);
+		void loadModel(std::string const& path);
 		void processNode(aiNode* node, const aiScene* scene);
-		TsrtMesh processMesh(aiMesh* mesh, const aiScene* scene);
+		Mesh processMesh(aiMesh* mesh, const aiScene* scene);
 	};
 }

@@ -1,5 +1,6 @@
 #include "Engine.h"
 
+
 Tsrt::Engine::Engine()
 {
 	this->initEngine();
@@ -49,6 +50,8 @@ void Tsrt::Engine::initEngine()
 	{
 		std::cerr << "FAILED::ICON_LOADING" << std::endl;
 	}
+
+	this->tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj");
 }
 
 void Tsrt::Engine::runEngine()
@@ -58,6 +61,7 @@ void Tsrt::Engine::runEngine()
 		glClearColor(0.2, 0.1, 0.3, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		this->tesseract->DrawModel();
 
 		glfwSwapBuffers(this->window);
 		glfwPollEvents();

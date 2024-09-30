@@ -4,6 +4,8 @@
 #include <GLFW/glfw3.h>
 #include <stb/stb_image.h>
 
+#include "ToolBox/Model.h"
+
 #include "tspch.h"
 
 namespace Tsrt
@@ -21,5 +23,7 @@ namespace Tsrt
 		void initEngine();
 		void runEngine();
 		void destroyEngine();
+
+		std::shared_ptr<Model> tesseract;
 	};
 }
