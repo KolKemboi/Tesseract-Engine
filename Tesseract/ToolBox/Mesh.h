@@ -17,16 +17,16 @@ namespace Tsrt
 	class Mesh
 	{
 	public:
-		unsigned int _vao;
-		std::vector<Vertex> _vertices;
-		std::vector<unsigned int> _indices;
+		unsigned int m_vao;
+		std::vector<Vertex> m_vertices;
+		std::vector<unsigned int> m_indices;
 
-		Mesh(std::vector<Vertex> _vertices, std::vector<unsigned int> _indices);
+		Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
 		void MeshDestroyer();
 		void DrawMesh();
 
 	private:
-		unsigned int _vbo, _ebo;
+		unsigned int m_vbo, m_ebo;
 
 		void setupMesh();
 	};

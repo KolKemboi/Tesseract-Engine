@@ -165,6 +165,8 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="stb.cpp" />
+    <ClCompile Include="ToolBox\Mesh.cpp" />
+    <ClCompile Include="ToolBox\Model.cpp" />
     <ClCompile Include="tspch.cpp" />
   </ItemGroup>
   <ItemGroup>
