@@ -15,7 +15,6 @@ namespace Tsrt
 	public:
 		std::vector <Mesh> m_meshes;
 		Model(std::string const& path);
-		void ModelDestroyer();
 		void DrawModel();
 
 	private:
