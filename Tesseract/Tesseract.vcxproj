@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ToolBox\Camera.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="ToolBox\Mesh.h" />
     <ClInclude Include="ToolBox\Model.h" />
+    <ClInclude Include="ToolBox\Shader.h" />
     <ClInclude Include="tspch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -165,8 +167,10 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="stb.cpp" />
+    <ClCompile Include="ToolBox\Camera.cpp" />
     <ClCompile Include="ToolBox\Mesh.cpp" />
     <ClCompile Include="ToolBox\Model.cpp" />
+    <ClCompile Include="ToolBox\Shader.cpp" />
     <ClCompile Include="tspch.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -5,10 +5,6 @@ Tsrt::Model::Model(std::string const& path)
 	this->loadModel(path);
 }
 
-void Tsrt::Model::ModelDestroyer()
-{
-}
-
 void Tsrt::Model::DrawModel()
 {
 	for (unsigned int i = 0; i < this->m_meshes.size(); i++)
