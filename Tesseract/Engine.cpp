@@ -23,15 +23,15 @@ void Tsrt::Engine::initEngine()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	this->window = glfwCreateWindow(this->width, this->height, "Tesseract", nullptr, nullptr);
-	if (this->window == NULL)
+	this->m_window= glfwCreateWindow(this->m_width, this->m_height, "Tesseract", nullptr, nullptr);
+	if (this->m_window== NULL)
 	{
 		std::cerr << "FAILED::WINDOW_CREATION::TERMINATE" << std::endl;
 		glfwTerminate();
 	}
-	glfwMakeContextCurrent(this->window);
+	glfwMakeContextCurrent(this->m_window);
 	gladLoadGL();
-	glViewport(0, 0, static_cast<unsigned int>(this->width), static_cast<unsigned int>(this->height));
+	glViewport(0, 0, static_cast<unsigned int>(this->m_width), static_cast<unsigned int>(this->m_height));
 	glEnable(GL_DEPTH_TEST);
 
 	int widthImg, heightImg, nrChannels;
@@ -43,7 +43,7 @@ void Tsrt::Engine::initEngine()
 		icons[0].width = widthImg;
 		icons[0].height = heightImg;
 
-		glfwSetWindowIcon(this->window, 1, icons);
+		glfwSetWindowIcon(this->m_window, 1, icons);
 
 	}
 	else
@@ -51,19 +51,19 @@ void Tsrt::Engine::initEngine()
 		std::cerr << "FAILED::ICON_LOADING" << std::endl;
 	}
 
-	this->tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj");
+	this->m_tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj");
 }
 
 void Tsrt::Engine::runEngine()
 {
-	while (!glfwWindowShouldClose(this->window))
+	while (!glfwWindowShouldClose(this->m_window))
 	{
 		glClearColor(0.2, 0.1, 0.3, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		this->tesseract->DrawModel();
+		this->m_tesseract->DrawModel();
 
-		glfwSwapBuffers(this->window);
+		glfwSwapBuffers(this->m_window);
 		glfwPollEvents();
 
 	}
@@ -71,7 +71,7 @@ void Tsrt::Engine::runEngine()
 
 void Tsrt::Engine::destroyEngine()
 {
-	glfwDestroyWindow(this->window);
-	this->window = 0;
+	glfwDestroyWindow(this->m_window);
+	this->m_window= 0;
 	glfwTerminate();
 }

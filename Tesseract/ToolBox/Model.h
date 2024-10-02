@@ -14,7 +14,7 @@ namespace Tsrt
 	{
 	public:
 		std::vector <Mesh> m_meshes;
-		Model(std::string const& path);
+		Model(std::string const& pathz);
 		void DrawModel();
 
 	private:
