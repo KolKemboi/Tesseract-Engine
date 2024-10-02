@@ -1,10 +1,8 @@
 #include "Model.h"
 
-Tsrt::Model::Model(std::string const& path, const char* vertexPath, const char* fragmentPath)
+Tsrt::Model::Model(std::string const& path)
 {
 	this->loadModel(path);
-	this->m_vertexPath = vertexPath;
-	this->m_fragmentPath = fragmentPath;
 }
 
 void Tsrt::Model::DrawModel()
@@ -78,5 +76,5 @@ Tsrt::Mesh Tsrt::Model::processMesh(aiMesh* mesh, const aiScene* scene)
 		}
 	}
 
-	return Mesh(vertices, indices, this->m_vertexPath, this->m_fragmentPath);
+	return Mesh(vertices, indices);
 }

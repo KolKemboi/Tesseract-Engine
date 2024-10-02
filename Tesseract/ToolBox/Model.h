@@ -14,12 +14,11 @@ namespace Tsrt
 	{
 	public:
 		std::vector <Mesh> m_meshes;
-		Model(std::string const& path, const char* vertexPath, const char* fragmentPath);
+		Model(std::string const& pathz);
 		void DrawModel();
 
 	private:
-		const char* m_vertexPath;
-		const char* m_fragmentPath;
+
 		void loadModel(std::string const& path);
 		void processNode(aiNode* node, const aiScene* scene);
 		Mesh processMesh(aiMesh* mesh, const aiScene* scene);

@@ -1,11 +1,9 @@
 #include "Mesh.h"
 
-Tsrt::Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, const char* vertexPath, const char* fragmentPath)
+Tsrt::Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices)
 {
 	this->m_vertices = vertices;
 	this->m_indices = indices;
-	this->m_modelVertexFile = vertexPath;
-	this->m_modelFragmentFile = fragmentPath;
 	this->setupMesh();
 }
 
@@ -22,7 +20,6 @@ void Tsrt::Mesh::MeshDestroyer()
 
 void Tsrt::Mesh::DrawMesh()
 {
-	this->modelShader->useShader();
 	glBindVertexArray(this->m_vao);
 	glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(this->m_indices.size()), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
@@ -48,13 +45,4 @@ void Tsrt::Mesh::setupMesh()
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
 
 	glBindVertexArray(0);
-
-	try 
-	{
-		this->modelShader = std::make_shared<Shader>(this->m_modelVertexFile, this->m_modelFragmentFile);
-	}
-	catch (const std::runtime_error& e)
-	{
-		std::cerr << "RUNTIME ERROR::" << e.what() << std::endl;
-	}
 }

@@ -51,7 +51,7 @@ void Tsrt::Engine::initEngine()
 		std::cerr << "FAILED::ICON_LOADING" << std::endl;
 	}
 
-	this->m_tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj", "ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
+	this->m_tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj");
 }
 
 void Tsrt::Engine::runEngine()
