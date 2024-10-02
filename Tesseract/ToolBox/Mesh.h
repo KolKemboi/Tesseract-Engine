@@ -27,7 +27,6 @@ namespace Tsrt
 
 	private:
 		unsigned int m_vbo, m_ebo;
-
 		void setupMesh();
 	};
 

@@ -82,18 +82,25 @@ void Tsrt::Shader::destroyShader()
 
 std::string Tsrt::Shader::loadShader(const char* filename)
 {
-	std::ifstream in(filename, std::ios::binary);
+	// Open the file
+	std::ifstream in(filename);
 
-	if (!in) throw std::runtime_error("SHADER FILE::FILE READER ERROR::" + std::string(filename));
+	// Check if the file opened successfully
+	if (!in) {
+		std::cerr << "FILE NOT FOUND  " << std::string(filename) << std::endl;
+	}
 
+	// Read the file contents into a string stream
 	std::stringstream buffer;
-
 	buffer << in.rdbuf();
 
-	if (buffer.str().empty()) throw std::runtime_error("SHADER FILE::SHADER SOURCE EMPTY" + std::string(filename));
+	// Check if the shader source is empty
+	if (buffer.str().empty()) {
+		throw std::runtime_error("SHADER FILE::SHADER SOURCE EMPTY:: " + std::string(filename));
+	}
 
+	// Return the shader source code as a string
 	return buffer.str();
-
 }
 
 

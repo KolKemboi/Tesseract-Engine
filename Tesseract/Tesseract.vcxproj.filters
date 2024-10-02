@@ -113,8 +113,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assimp-vc140-mt.dll" />
-    <None Include="ToolBox\Shaders\model.vert" />
     <None Include="ToolBox\Shaders\model.frag" />
+    <None Include="ToolBox\Shaders\model.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Logo.png">
