@@ -26,5 +26,6 @@ namespace Tsrt
 		void destroyEngine();
 
 		std::shared_ptr<Model> m_tesseract;
+		std::shared_ptr<Shader> m_meshShader;
 	};
 }
