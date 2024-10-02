@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../tspch.h"
+#include "Shader.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
@@ -15,7 +16,7 @@ namespace Tsrt
 	{
 	public:
 		Camera();
-		void setPerspective();
+		void setPerspective(unsigned int windowWidth, unsigned int windowHeight);
 		void setView();
 		void lookAround(std::string const& keyPressed);
 		void moveAround(std::string const& keyPressed);
@@ -23,6 +24,10 @@ namespace Tsrt
 	private:
 		glm::vec3 m_front, m_up, m_right, m_pos;
 		
+		glm::mat4 m_projection, m_view;
+
+		float m_sensitivity, m_speed, m_pitch, m_yaw;
+
 		void updateCamVecs();
 	};
 }

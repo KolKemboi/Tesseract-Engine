@@ -10,7 +10,7 @@ namespace Tsrt
 	class Shader
 	{
 	public:
-		Shader();
+		Shader(const char* vertexFile, const char* fragFile);
 		void DestroyShader();
 		unsigned int getShader();
 		void useShader();
@@ -31,7 +31,7 @@ namespace Tsrt
 
 	private:
 		unsigned int m_vertexShader, m_fragmentShader, m_shaderProgram;
-		void checkCompileErrors(unsigned int shader, std::string const& SHADER);
+		void checkCompileErrors(unsigned int shader, const char* type);
 		void destroyShader();
 		std::string loadShader(const char* filename);
 	};

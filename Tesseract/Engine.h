@@ -5,6 +5,7 @@
 #include <stb/stb_image.h>
 
 #include "ToolBox/Model.h"
+#include "ToolBox/Shader.h"
 
 #include "tspch.h"
 
@@ -18,12 +19,12 @@ namespace Tsrt
 		void EngineRun();
 
 	private:
-		GLFWwindow* window;
-		unsigned int width = 800, height = 800;
+		GLFWwindow* m_window;
+		unsigned int m_width = 800, m_height = 800;
 		void initEngine();
 		void runEngine();
 		void destroyEngine();
 
-		std::shared_ptr<Model> tesseract;
+		std::shared_ptr<Model> m_tesseract;
 	};
 }
