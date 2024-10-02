@@ -1,7 +1,10 @@
 #include "Mesh.h"
 
-Tsrt::Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices)
+Tsrt::Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, 
+	const char* vertexFile, const char* fragmentFile)
 {
+	this->m_vertexFile = vertexFile;
+	this->m_fragmentFile = fragmentFile;
 	this->m_vertices = vertices;
 	this->m_indices = indices;
 	this->setupMesh();
@@ -20,6 +23,7 @@ void Tsrt::Mesh::MeshDestroyer()
 
 void Tsrt::Mesh::DrawMesh()
 {
+	this->m_meshShader->useShader();
 	glBindVertexArray(this->m_vao);
 	glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(this->m_indices.size()), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
@@ -43,6 +47,8 @@ void Tsrt::Mesh::setupMesh()
 	
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
+	
+	this->m_meshShader = std::make_shared<Shader>(this->m_vertexFile, this->m_fragmentFile);
 
 	glBindVertexArray(0);
 }

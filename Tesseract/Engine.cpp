@@ -51,8 +51,10 @@ void Tsrt::Engine::initEngine()
 		std::cerr << "FAILED::ICON_LOADING" << std::endl;
 	}
 
-	this->m_tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj");
-	this->m_meshShader = std::make_shared<Shader>("ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
+	this->m_tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj",
+		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
+
+	//this->m_meshShader = std::make_shared<Shader>("ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
 }
 
 void Tsrt::Engine::runEngine()
@@ -62,7 +64,7 @@ void Tsrt::Engine::runEngine()
 		glClearColor(0.2, 0.1, 0.3, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		this->m_meshShader->useShader();
+		//this->m_meshShader->useShader();
 		this->m_tesseract->DrawModel();
 
 		glfwSwapBuffers(this->m_window);
