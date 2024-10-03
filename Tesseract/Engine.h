@@ -6,6 +6,7 @@
 
 #include "ToolBox/Model.h"
 #include "ToolBox/Shader.h"
+#include "ToolBox/Inputs.h"
 
 #include "tspch.h"
 
@@ -25,7 +26,8 @@ namespace Tsrt
 		void runEngine();
 		void destroyEngine();
 
+		std::shared_ptr<Inputs> m_inputHandler;
 		std::shared_ptr<Model> m_tesseract;
-		std::shared_ptr<Shader> m_meshShader;
+		std::shared_ptr<Model> m_cube;
 	};
 }

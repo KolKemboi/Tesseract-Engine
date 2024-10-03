@@ -53,18 +53,23 @@ void Tsrt::Engine::initEngine()
 
 	this->m_tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj",
 		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
-
-	//this->m_meshShader = std::make_shared<Shader>("ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
+		
+	this->m_inputHandler = std::make_shared<Inputs>(this->m_window);
+	this->m_inputHandler->callBackFunction();
 }
 
 void Tsrt::Engine::runEngine()
 {
 	while (!glfwWindowShouldClose(this->m_window))
 	{
+		std::string key = this->m_inputHandler->keyPressed();
+		std::transform(key.begin(), key.end(), key.begin(), ::toupper);
+		
+		if (std::strcmp(key.c_str(), "ESCAPE") == 0) glfwSetWindowShouldClose(this->m_window, true);
+
 		glClearColor(0.2, 0.1, 0.3, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//this->m_meshShader->useShader();
 		this->m_tesseract->DrawModel();
 
 		glfwSwapBuffers(this->m_window);
@@ -75,6 +80,7 @@ void Tsrt::Engine::runEngine()
 
 void Tsrt::Engine::destroyEngine()
 {
+	this->m_inputHandler->InputsDestroyer();
 	glfwDestroyWindow(this->m_window);
 	this->m_window= 0;
 	glfwTerminate();
