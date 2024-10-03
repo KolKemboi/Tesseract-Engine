@@ -60,6 +60,9 @@
     <ClInclude Include="ToolBox\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ToolBox\Inputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp">
@@ -110,11 +113,18 @@
     <ClCompile Include="ToolBox\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ToolBox\Inputs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="assimp-vc140-mt.dll" />
     <None Include="ToolBox\Shaders\model.frag" />
     <None Include="ToolBox\Shaders\model.vert" />
+    <None Include="ToolBox\Shaders\light.vert" />
+    <None Include="ToolBox\Shaders\light.frag" />
+    <None Include="ToolBox\Shaders\outline.vert" />
+    <None Include="ToolBox\Shaders\outline.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Logo.png">

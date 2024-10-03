@@ -16,8 +16,8 @@ namespace Tsrt
 	{
 	public:
 		Camera();
-		void setPerspective(unsigned int windowWidth, unsigned int windowHeight);
-		void setView();
+		void setPerspective(Shader& shader, unsigned int windowWidth, unsigned int windowHeight);
+		void setView(Shader& shader);
 		void lookAround(std::string const& keyPressed);
 		void moveAround(std::string const& keyPressed);
 		void panAround();// impl this feature
@@ -25,8 +25,9 @@ namespace Tsrt
 		glm::vec3 m_front, m_up, m_right, m_pos;
 		
 		glm::mat4 m_projection, m_view;
+		
 
-		float m_sensitivity, m_speed, m_pitch, m_yaw;
+		float m_sensitivity, m_speed, m_pitch, m_yaw, m_camFOV, m_nearPlane, m_farPlane;
 
 		void updateCamVecs();
 	};
