@@ -17,6 +17,7 @@ void Tsrt::Inputs::InputsDestroyer()
 void Tsrt::Inputs::callBackFunction()
 {
 	glfwSetKeyCallback(m_instance->m_window, m_instance->keyCallBack);
+    glfwSetMouseButtonCallback(m_instance->m_window, m_instance->mouseCallBack); //IMPL MOUSE CALLBACK FUNC
 }
 
 

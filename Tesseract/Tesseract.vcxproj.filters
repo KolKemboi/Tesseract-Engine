@@ -121,6 +121,10 @@
     <None Include="assimp-vc140-mt.dll" />
     <None Include="ToolBox\Shaders\model.frag" />
     <None Include="ToolBox\Shaders\model.vert" />
+    <None Include="ToolBox\Shaders\light.vert" />
+    <None Include="ToolBox\Shaders\light.frag" />
+    <None Include="ToolBox\Shaders\outline.vert" />
+    <None Include="ToolBox\Shaders\outline.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Logo.png">

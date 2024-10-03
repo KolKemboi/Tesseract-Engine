@@ -23,5 +23,6 @@ namespace Tsrt
 		static Inputs* m_instance;
 
 		static void keyCallBack(GLFWwindow* window, int key, int scanCode, int action, int mode);
+		static void mouseCallBack(GLFWwindow* window, int button, int action, int mods);
 	};
 }
