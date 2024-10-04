@@ -1798,6 +1798,7 @@ typedef void (* GLFWwindowcontentscalefun)(GLFWwindow* window, float xscale, flo
  *  @sa @ref input_mouse_button
  *  @sa @ref glfwSetMouseButtonCallback
  *
+ * 
  *  @since Added in version 1.0.
  *  @glfw3 Added window handle and modifier mask parameters.
  *

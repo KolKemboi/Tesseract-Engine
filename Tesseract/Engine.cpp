@@ -53,9 +53,14 @@ void Tsrt::Engine::initEngine()
 
 	this->m_tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj",
 		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
+
+	this->m_defaultScene = std::make_shared<Model>("TsrtAssets/default scene.obj",
+		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
+
 		
-	this->m_inputHandler = std::make_shared<Inputs>(this->m_window);
+	this->m_inputHandler = std::make_shared<KeyboardInputs>(this->m_window);
 	this->m_inputHandler->callBackFunction();
+	this->m_camera = std::make_shared<Camera>();
 }
 
 void Tsrt::Engine::runEngine()
@@ -70,7 +75,8 @@ void Tsrt::Engine::runEngine()
 		glClearColor(0.2, 0.1, 0.3, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		this->m_tesseract->DrawModel();
+		//this->m_tesseract->DrawModel(*this->m_camera);
+		this->m_defaultScene->DrawModel(*this->m_camera);
 
 		glfwSwapBuffers(this->m_window);
 		glfwPollEvents();
@@ -78,9 +84,20 @@ void Tsrt::Engine::runEngine()
 	}
 }
 
+/*
+spotlight default => 0.5
+pointlight default => 0.3
+sun default => 1
+
+
+CAMERA POS => Z DIST => 12
+			=> X DIST =>8
+			=> Y DIST => 7
+*/
+
 void Tsrt::Engine::destroyEngine()
 {
-	this->m_inputHandler->InputsDestroyer();
+	this->m_inputHandler->KeyboardInputsDestroyer();
 	glfwDestroyWindow(this->m_window);
 	this->m_window= 0;
 	glfwTerminate();

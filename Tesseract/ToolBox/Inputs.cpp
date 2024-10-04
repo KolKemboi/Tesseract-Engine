@@ -1,27 +1,29 @@
 #include "Inputs.h"
 
-Tsrt::Inputs* Tsrt::Inputs::m_instance = nullptr;
+//----------------------------MOUSE INPUTS ---------------------------------------------
 
-Tsrt::Inputs::Inputs(GLFWwindow* window)
+Tsrt::KeyboardInputs* Tsrt::KeyboardInputs::m_instance = nullptr;
+
+Tsrt::KeyboardInputs::KeyboardInputs(GLFWwindow* window)
 {
 	m_instance = this;
 	std::fill(std::begin(m_instance->m_keys), std::end(m_instance->m_keys), false);
 	m_instance->m_window = window;
 }
 
-void Tsrt::Inputs::InputsDestroyer()
+void Tsrt::KeyboardInputs::KeyboardInputsDestroyer()
 {
 	if (m_instance == this) m_instance = nullptr;
 }
 
-void Tsrt::Inputs::callBackFunction()
+void Tsrt::KeyboardInputs::callBackFunction()
 {
 	glfwSetKeyCallback(m_instance->m_window, m_instance->keyCallBack);
-    glfwSetMouseButtonCallback(m_instance->m_window, m_instance->mouseCallBack); //IMPL MOUSE CALLBACK FUNC
+
 }
 
 
-void Tsrt::Inputs::keyCallBack(GLFWwindow* window, int key, int scanCode, int action, int mode)
+void Tsrt::KeyboardInputs::keyCallBack(GLFWwindow* window, int key, int scanCode, int action, int mode)
 {
 	if (m_instance)
 	{
@@ -34,7 +36,7 @@ void Tsrt::Inputs::keyCallBack(GLFWwindow* window, int key, int scanCode, int ac
 	}
 }
 
-std::string Tsrt::Inputs::keyPressed()
+std::string Tsrt::KeyboardInputs::keyPressed()
 {
     if (m_instance) {
         // Check for letters A-Z
