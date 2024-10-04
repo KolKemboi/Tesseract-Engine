@@ -1,8 +1,19 @@
 #include "Camera.h"
 
+/*
+spotlight default => 0.5
+pointlight default => 0.3
+sun default => 1
+
+
+CAMERA POS => Z DIST => 12
+			=> X DIST =>8
+			=> Y DIST => 7
+*/
+
 Tsrt::Camera::Camera()
 {
-	this->m_pos = glm::vec3(0.0f, 3.5f, 2.5f);
+	this->m_pos = glm::vec3(13.0f, 13.0f, 13.0f);
 	this->m_right = glm::vec3(1.0f, 0.0f, 0.0f);
 	this->m_up = glm::vec3(0.0f, 1.0f, 0.0f);
 	this->m_camFOV = 45.0f;

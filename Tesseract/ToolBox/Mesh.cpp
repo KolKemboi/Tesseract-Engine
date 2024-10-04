@@ -7,6 +7,7 @@ Tsrt::Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices
 	this->m_fragmentFile = fragmentFile;
 	this->m_vertices = vertices;
 	this->m_indices = indices;
+	this->m_modelMatrix = glm::mat4(1.0f);
 	this->setupMesh();
 }
 
@@ -21,12 +22,28 @@ void Tsrt::Mesh::MeshDestroyer()
 	this->m_vao = 0;
 }
 
-void Tsrt::Mesh::DrawMesh()
+void Tsrt::Mesh::DrawMesh(Camera& camera)
 {
+	camera.setPerspective(*this->m_meshShader, 800, 800);
+	camera.setView(*this->m_meshShader);
+	this->setModelMatrix(glm::vec3(0.0f, 0.0f, 0.0f),glm::vec3(0.0f, 0.0f, 0.0f),glm::vec3(1.0f),
+		*this->m_meshShader);
+
 	this->m_meshShader->useShader();
 	glBindVertexArray(this->m_vao);
 	glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(this->m_indices.size()), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
+}
+
+void Tsrt::Mesh::setModelMatrix(glm::vec3 modelPos, glm::vec3 modelRot, glm::vec3 modelScale, Shader& shader)
+{
+	this->m_modelMatrix = glm::mat4(1.0f);  
+	this->m_modelMatrix = glm::translate(this->m_modelMatrix, modelPos);
+	this->m_modelMatrix = glm::rotate(this->m_modelMatrix, glm::radians(modelRot.x), glm::vec3(1.0f, 0.0f, 0.0f)); 
+	this->m_modelMatrix = glm::rotate(this->m_modelMatrix, glm::radians(modelRot.y), glm::vec3(0.0f, 1.0f, 0.0f));
+	this->m_modelMatrix = glm::rotate(this->m_modelMatrix, glm::radians(modelRot.z), glm::vec3(0.0f, 0.0f, 1.0f)); 
+	this->m_modelMatrix = glm::scale(this->m_modelMatrix, modelScale);
+	shader.setMat4("model", this->m_modelMatrix);
 }
 
 void Tsrt::Mesh::setupMesh()

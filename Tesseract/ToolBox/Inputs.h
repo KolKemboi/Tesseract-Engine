@@ -6,11 +6,11 @@
 
 namespace Tsrt
 {
-	class Inputs
+	class KeyboardInputs
 	{
 	public:
-		Inputs(GLFWwindow* window);
-		void InputsDestroyer();
+		KeyboardInputs(GLFWwindow* window);
+		void KeyboardInputsDestroyer();
 		void callBackFunction();
 		std::string keyPressed();
 
@@ -20,9 +20,9 @@ namespace Tsrt
 
 		std::vector <std::string> m_keysPressed;
 
-		static Inputs* m_instance;
+		static KeyboardInputs* m_instance;
 
 		static void keyCallBack(GLFWwindow* window, int key, int scanCode, int action, int mode);
-		static void mouseCallBack(GLFWwindow* window, int button, int action, int mods);
 	};
+
 }

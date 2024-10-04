@@ -15,7 +15,7 @@ namespace Tsrt
 	public:
 		std::vector <Mesh> m_meshes;
 		Model(std::string const& path, const char* vertexFile, const char* fragmantFile);
-		void DrawModel();
+		void DrawModel(Camera& camera);
 
 	private:
 
