@@ -19,7 +19,7 @@ namespace Tsrt
 		void setPerspective(Shader& shader, unsigned int windowWidth, unsigned int windowHeight);
 		void setView(Shader& shader);
 		void lookAround(std::string const& keyPressed);
-		void moveAround(std::string const& keyPressed);
+		void moveAround(std::string const& keyPressed, float deltaTime);
 		void panAround();// impl this feature
 	private:
 		glm::vec3 m_front, m_up, m_right, m_pos;

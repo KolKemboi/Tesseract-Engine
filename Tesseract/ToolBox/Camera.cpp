@@ -13,16 +13,17 @@ CAMERA POS => Z DIST => 12
 
 Tsrt::Camera::Camera()
 {
-	this->m_pos = glm::vec3(13.0f, 13.0f, 13.0f);
+	this->m_pos = glm::vec3(8.0f, 7.0f, 12.0f);
 	this->m_right = glm::vec3(1.0f, 0.0f, 0.0f);
 	this->m_up = glm::vec3(0.0f, 1.0f, 0.0f);
+	this->m_front = glm::vec3(0.0f, 0.0f, -1.0f);
 	this->m_camFOV = 45.0f;
 	this->m_nearPlane = 0.1f;
 	this->m_farPlane = 1000.0f;
 	this->m_pitch = 0.0f;
-	this->m_yaw = 90.0f;
-
-	this->updateCamVecs();
+	this->m_yaw = -90.0f;
+	this->m_speed = 10.0f;
+	//this->updateCamVecs();
 
 }
 
@@ -44,8 +45,17 @@ void Tsrt::Camera::lookAround(std::string const& keyPressed)
 {
 }
 
-void Tsrt::Camera::moveAround(std::string const& keyPressed)
+void Tsrt::Camera::moveAround(std::string const& keyPressed, float deltaTime)
 {
+	float velocity = this->m_speed * deltaTime;
+
+	if (keyPressed.find(" W ") != std::string::npos) this->m_pos += this->m_front * velocity;
+	if (keyPressed.find(" S ") != std::string::npos) this->m_pos -= this->m_front * velocity;
+	if (keyPressed.find(" A ") != std::string::npos) this->m_pos -= this->m_right * velocity;
+	if (keyPressed.find(" D ") != std::string::npos) this->m_pos += this->m_right * velocity;
+	if (keyPressed.find(" SPACE ") != std::string::npos) this->m_pos += this->m_up * velocity;
+	if (keyPressed.find(" SHIFT ") != std::string::npos) this->m_pos -= this->m_up* velocity;
+
 }
 
 void Tsrt::Camera::updateCamVecs()

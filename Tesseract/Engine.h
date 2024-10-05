@@ -26,7 +26,11 @@ namespace Tsrt
 		void initEngine();
 		void runEngine();
 		void destroyEngine();
+		std::vector<std::string> splitKeys(const std::string& input);
+		std::vector<std::string> m_keys;
 
+		float m_preTime = 0;
+		float m_deltaTime = 0;
 		std::shared_ptr<KeyboardInputs> m_inputHandler;
 		std::shared_ptr<Model> m_tesseract;
 		std::shared_ptr<Model> m_cube;

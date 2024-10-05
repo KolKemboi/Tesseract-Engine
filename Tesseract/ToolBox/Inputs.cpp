@@ -38,119 +38,90 @@ void Tsrt::KeyboardInputs::keyCallBack(GLFWwindow* window, int key, int scanCode
 
 std::string Tsrt::KeyboardInputs::keyPressed()
 {
+    std::string pressedKeys = "";
+
     if (m_instance) {
         // Check for letters A-Z
-        if (m_instance->m_keys[GLFW_KEY_A]) return "A";
-        if (m_instance->m_keys[GLFW_KEY_B]) return "B";
-        if (m_instance->m_keys[GLFW_KEY_C]) return "C";
-        if (m_instance->m_keys[GLFW_KEY_D]) return "D";
-        if (m_instance->m_keys[GLFW_KEY_E]) return "E";
-        if (m_instance->m_keys[GLFW_KEY_F]) return "F";
-        if (m_instance->m_keys[GLFW_KEY_G]) return "G";
-        if (m_instance->m_keys[GLFW_KEY_H]) return "H";
-        if (m_instance->m_keys[GLFW_KEY_I]) return "I";
-        if (m_instance->m_keys[GLFW_KEY_J]) return "J";
-        if (m_instance->m_keys[GLFW_KEY_K]) return "K";
-        if (m_instance->m_keys[GLFW_KEY_L]) return "L";
-        if (m_instance->m_keys[GLFW_KEY_M]) return "M";
-        if (m_instance->m_keys[GLFW_KEY_N]) return "N";
-        if (m_instance->m_keys[GLFW_KEY_O]) return "O";
-        if (m_instance->m_keys[GLFW_KEY_P]) return "P";
-        if (m_instance->m_keys[GLFW_KEY_Q]) return "Q";
-        if (m_instance->m_keys[GLFW_KEY_R]) return "R";
-        if (m_instance->m_keys[GLFW_KEY_S]) return "S";
-        if (m_instance->m_keys[GLFW_KEY_T]) return "T";
-        if (m_instance->m_keys[GLFW_KEY_U]) return "U";
-        if (m_instance->m_keys[GLFW_KEY_V]) return "V";
-        if (m_instance->m_keys[GLFW_KEY_W]) return "W";
-        if (m_instance->m_keys[GLFW_KEY_X]) return "X";
-        if (m_instance->m_keys[GLFW_KEY_Y]) return "Y";
-        if (m_instance->m_keys[GLFW_KEY_Z]) return "Z";
+        if (m_instance->m_keys[GLFW_KEY_A]) pressedKeys += " A ";
+        if (m_instance->m_keys[GLFW_KEY_B]) pressedKeys += " B ";
+        if (m_instance->m_keys[GLFW_KEY_C]) pressedKeys += " C ";
+        if (m_instance->m_keys[GLFW_KEY_D]) pressedKeys += " D ";
+        if (m_instance->m_keys[GLFW_KEY_E]) pressedKeys += " E ";
+        if (m_instance->m_keys[GLFW_KEY_F]) pressedKeys += " F ";
+        if (m_instance->m_keys[GLFW_KEY_G]) pressedKeys += " G ";
+        if (m_instance->m_keys[GLFW_KEY_H]) pressedKeys += " H ";
+        if (m_instance->m_keys[GLFW_KEY_I]) pressedKeys += " I ";
+        if (m_instance->m_keys[GLFW_KEY_J]) pressedKeys += " J ";
+        if (m_instance->m_keys[GLFW_KEY_K]) pressedKeys += " K ";
+        if (m_instance->m_keys[GLFW_KEY_L]) pressedKeys += " L ";
+        if (m_instance->m_keys[GLFW_KEY_M]) pressedKeys += " M ";
+        if (m_instance->m_keys[GLFW_KEY_N]) pressedKeys += " N ";
+        if (m_instance->m_keys[GLFW_KEY_O]) pressedKeys += " O ";
+        if (m_instance->m_keys[GLFW_KEY_P]) pressedKeys += " P ";
+        if (m_instance->m_keys[GLFW_KEY_Q]) pressedKeys += " Q ";
+        if (m_instance->m_keys[GLFW_KEY_R]) pressedKeys += " R ";
+        if (m_instance->m_keys[GLFW_KEY_S]) pressedKeys += " S ";
+        if (m_instance->m_keys[GLFW_KEY_T]) pressedKeys += " T ";
+        if (m_instance->m_keys[GLFW_KEY_U]) pressedKeys += " U ";
+        if (m_instance->m_keys[GLFW_KEY_V]) pressedKeys += " V ";
+        if (m_instance->m_keys[GLFW_KEY_W]) pressedKeys += " W ";
+        if (m_instance->m_keys[GLFW_KEY_X]) pressedKeys += " X ";
+        if (m_instance->m_keys[GLFW_KEY_Y]) pressedKeys += " Y ";
+        if (m_instance->m_keys[GLFW_KEY_Z]) pressedKeys += " Z ";
 
         // Check for numbers 0-9
-        if (m_instance->m_keys[GLFW_KEY_0]) return "0";
-        if (m_instance->m_keys[GLFW_KEY_1]) return "1";
-        if (m_instance->m_keys[GLFW_KEY_2]) return "2";
-        if (m_instance->m_keys[GLFW_KEY_3]) return "3";
-        if (m_instance->m_keys[GLFW_KEY_4]) return "4";
-        if (m_instance->m_keys[GLFW_KEY_5]) return "5";
-        if (m_instance->m_keys[GLFW_KEY_6]) return "6";
-        if (m_instance->m_keys[GLFW_KEY_7]) return "7";
-        if (m_instance->m_keys[GLFW_KEY_8]) return "8";
-        if (m_instance->m_keys[GLFW_KEY_9]) return "9";
+        if (m_instance->m_keys[GLFW_KEY_0]) pressedKeys += " 0 ";
+        if (m_instance->m_keys[GLFW_KEY_1]) pressedKeys += " 1 ";
+        if (m_instance->m_keys[GLFW_KEY_2]) pressedKeys += " 2 ";
+        if (m_instance->m_keys[GLFW_KEY_3]) pressedKeys += " 3 ";
+        if (m_instance->m_keys[GLFW_KEY_4]) pressedKeys += " 4 ";
+        if (m_instance->m_keys[GLFW_KEY_5]) pressedKeys += " 5 ";
+        if (m_instance->m_keys[GLFW_KEY_6]) pressedKeys += " 6 ";
+        if (m_instance->m_keys[GLFW_KEY_7]) pressedKeys += " 7 ";
+        if (m_instance->m_keys[GLFW_KEY_8]) pressedKeys += " 8 ";
+        if (m_instance->m_keys[GLFW_KEY_9]) pressedKeys += " 9 ";
 
-        // Check for function keys F1-F12
-        if (m_instance->m_keys[GLFW_KEY_F1]) return "F1";
-        if (m_instance->m_keys[GLFW_KEY_F2]) return "F2";
-        if (m_instance->m_keys[GLFW_KEY_F3]) return "F3";
-        if (m_instance->m_keys[GLFW_KEY_F4]) return "F4";
-        if (m_instance->m_keys[GLFW_KEY_F5]) return "F5";
-        if (m_instance->m_keys[GLFW_KEY_F6]) return "F6";
-        if (m_instance->m_keys[GLFW_KEY_F7]) return "F7";
-        if (m_instance->m_keys[GLFW_KEY_F8]) return "F8";
-        if (m_instance->m_keys[GLFW_KEY_F9]) return "F9";
-        if (m_instance->m_keys[GLFW_KEY_F10]) return "F10";
-        if (m_instance->m_keys[GLFW_KEY_F11]) return "F11";
-        if (m_instance->m_keys[GLFW_KEY_F12]) return "F12";
+        // Function keys
+        if (m_instance->m_keys[GLFW_KEY_F1]) pressedKeys += " F1 ";
+        if (m_instance->m_keys[GLFW_KEY_F2]) pressedKeys += " F2 ";
+        if (m_instance->m_keys[GLFW_KEY_F3]) pressedKeys += " F3 ";
+        if (m_instance->m_keys[GLFW_KEY_F4]) pressedKeys += " F4 ";
+        if (m_instance->m_keys[GLFW_KEY_F5]) pressedKeys += " F5 ";
+        if (m_instance->m_keys[GLFW_KEY_F6]) pressedKeys += " F6 ";
+        if (m_instance->m_keys[GLFW_KEY_F7]) pressedKeys += " F7 ";
+        if (m_instance->m_keys[GLFW_KEY_F8]) pressedKeys += " F8 ";
+        if (m_instance->m_keys[GLFW_KEY_F9]) pressedKeys += " F9 ";
+        if (m_instance->m_keys[GLFW_KEY_F10]) pressedKeys += " F10 ";
+        if (m_instance->m_keys[GLFW_KEY_F11]) pressedKeys += " F11 ";
+        if (m_instance->m_keys[GLFW_KEY_F12]) pressedKeys += " F12 ";
 
-        // Check for common special keys
-        if (m_instance->m_keys[GLFW_KEY_SPACE]) return "Space";
-        if (m_instance->m_keys[GLFW_KEY_ENTER]) return "Enter";
-        if (m_instance->m_keys[GLFW_KEY_BACKSPACE]) return "Backspace";
-        if (m_instance->m_keys[GLFW_KEY_TAB]) return "Tab";
-        if (m_instance->m_keys[GLFW_KEY_ESCAPE]) return "Escape";
-        if (m_instance->m_keys[GLFW_KEY_LEFT_SHIFT] || m_instance->m_keys[GLFW_KEY_RIGHT_SHIFT]) return "Shift";
-        if (m_instance->m_keys[GLFW_KEY_LEFT_CONTROL] || m_instance->m_keys[GLFW_KEY_RIGHT_CONTROL]) return "Control";
-        if (m_instance->m_keys[GLFW_KEY_LEFT_ALT] || m_instance->m_keys[GLFW_KEY_RIGHT_ALT]) return "Alt";
+        // Special keys and arrows
+        if (m_instance->m_keys[GLFW_KEY_SPACE]) pressedKeys += " Space ";
+        if (m_instance->m_keys[GLFW_KEY_ENTER]) pressedKeys += " Enter ";
+        if (m_instance->m_keys[GLFW_KEY_BACKSPACE]) pressedKeys += " Backspace ";
+        if (m_instance->m_keys[GLFW_KEY_TAB]) pressedKeys += " Tab ";
+        if (m_instance->m_keys[GLFW_KEY_ESCAPE]) pressedKeys += " Escape ";
+        if (m_instance->m_keys[GLFW_KEY_LEFT_SHIFT] || m_instance->m_keys[GLFW_KEY_RIGHT_SHIFT]) pressedKeys += " Shift ";
+        if (m_instance->m_keys[GLFW_KEY_LEFT_CONTROL] || m_instance->m_keys[GLFW_KEY_RIGHT_CONTROL]) pressedKeys += " Control ";
+        if (m_instance->m_keys[GLFW_KEY_LEFT_ALT] || m_instance->m_keys[GLFW_KEY_RIGHT_ALT]) pressedKeys += " Alt ";
+        if (m_instance->m_keys[GLFW_KEY_LEFT]) pressedKeys += " Left Arrow ";
+        if (m_instance->m_keys[GLFW_KEY_RIGHT]) pressedKeys += " Right Arrow ";
+        if (m_instance->m_keys[GLFW_KEY_UP]) pressedKeys += " Up Arrow ";
+        if (m_instance->m_keys[GLFW_KEY_DOWN]) pressedKeys += " Down Arrow ";
 
-        // Check for arrow keys
-        if (m_instance->m_keys[GLFW_KEY_LEFT]) return "Left Arrow";
-        if (m_instance->m_keys[GLFW_KEY_RIGHT]) return "Right Arrow";
-        if (m_instance->m_keys[GLFW_KEY_UP]) return "Up Arrow";
-        if (m_instance->m_keys[GLFW_KEY_DOWN]) return "Down Arrow";
-
-        // Check for punctuation and other symbols
-        if (m_instance->m_keys[GLFW_KEY_COMMA]) return ",";
-        if (m_instance->m_keys[GLFW_KEY_PERIOD]) return ".";
-        if (m_instance->m_keys[GLFW_KEY_SLASH]) return "/";
-        if (m_instance->m_keys[GLFW_KEY_SEMICOLON]) return ";";
-        if (m_instance->m_keys[GLFW_KEY_APOSTROPHE]) return "'";
-        if (m_instance->m_keys[GLFW_KEY_LEFT_BRACKET]) return "[";
-        if (m_instance->m_keys[GLFW_KEY_RIGHT_BRACKET]) return "]";
-        if (m_instance->m_keys[GLFW_KEY_MINUS]) return "-";
-        if (m_instance->m_keys[GLFW_KEY_EQUAL]) return "=";
-        if (m_instance->m_keys[GLFW_KEY_BACKSLASH]) return "\\";
-        if (m_instance->m_keys[GLFW_KEY_GRAVE_ACCENT]) return "`";
-
-        // Check for other useful keys
-        if (m_instance->m_keys[GLFW_KEY_INSERT]) return "Insert";
-        if (m_instance->m_keys[GLFW_KEY_DELETE]) return "Delete";
-        if (m_instance->m_keys[GLFW_KEY_HOME]) return "Home";
-        if (m_instance->m_keys[GLFW_KEY_END]) return "End";
-        if (m_instance->m_keys[GLFW_KEY_PAGE_UP]) return "Page Up";
-        if (m_instance->m_keys[GLFW_KEY_PAGE_DOWN]) return "Page Down";
-
-        // Keypad keys
-        if (m_instance->m_keys[GLFW_KEY_KP_0]) return "Keypad 0";
-        if (m_instance->m_keys[GLFW_KEY_KP_1]) return "Keypad 1";
-        if (m_instance->m_keys[GLFW_KEY_KP_2]) return "Keypad 2";
-        if (m_instance->m_keys[GLFW_KEY_KP_3]) return "Keypad 3";
-        if (m_instance->m_keys[GLFW_KEY_KP_4]) return "Keypad 4";
-        if (m_instance->m_keys[GLFW_KEY_KP_5]) return "Keypad 5";
-        if (m_instance->m_keys[GLFW_KEY_KP_6]) return "Keypad 6";
-        if (m_instance->m_keys[GLFW_KEY_KP_7]) return "Keypad 7";
-        if (m_instance->m_keys[GLFW_KEY_KP_8]) return "Keypad 8";
-        if (m_instance->m_keys[GLFW_KEY_KP_9]) return "Keypad 9";
-        if (m_instance->m_keys[GLFW_KEY_KP_ADD]) return "Keypad +";
-        if (m_instance->m_keys[GLFW_KEY_KP_SUBTRACT]) return "Keypad -";
-        if (m_instance->m_keys[GLFW_KEY_KP_MULTIPLY]) return "Keypad *";
-        if (m_instance->m_keys[GLFW_KEY_KP_DIVIDE]) return "Keypad /";
-        if (m_instance->m_keys[GLFW_KEY_KP_ENTER]) return "Keypad Enter";
-
-        // Media and other keys
-        if (m_instance->m_keys[GLFW_KEY_PRINT_SCREEN]) return "Print Screen";
-        if (m_instance->m_keys[GLFW_KEY_PAUSE]) return "Pause";
+        // Symbols and other keys
+        if (m_instance->m_keys[GLFW_KEY_COMMA]) pressedKeys += " , ";
+        if (m_instance->m_keys[GLFW_KEY_PERIOD]) pressedKeys += " . ";
+        if (m_instance->m_keys[GLFW_KEY_SLASH]) pressedKeys += " / ";
+        if (m_instance->m_keys[GLFW_KEY_SEMICOLON]) pressedKeys += " ; ";
+        if (m_instance->m_keys[GLFW_KEY_APOSTROPHE]) pressedKeys += " ' ";
+        if (m_instance->m_keys[GLFW_KEY_LEFT_BRACKET]) pressedKeys += " [ ";
+        if (m_instance->m_keys[GLFW_KEY_RIGHT_BRACKET]) pressedKeys += " ] ";
+        if (m_instance->m_keys[GLFW_KEY_MINUS]) pressedKeys += " - ";
+        if (m_instance->m_keys[GLFW_KEY_EQUAL]) pressedKeys += " = ";
+        if (m_instance->m_keys[GLFW_KEY_BACKSLASH]) pressedKeys += " \\ ";
+        if (m_instance->m_keys[GLFW_KEY_GRAVE_ACCENT]) pressedKeys += " ` ";
     }
-    return ""; // If no key is pressed, return an empty string
 
+    return pressedKeys.empty() ? "None" : pressedKeys;
 }
