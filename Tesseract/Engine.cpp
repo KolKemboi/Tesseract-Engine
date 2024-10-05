@@ -33,7 +33,7 @@ void Tsrt::Engine::initEngine()
 	gladLoadGL();
 	glViewport(0, 0, static_cast<unsigned int>(this->m_width), static_cast<unsigned int>(this->m_height));
 	glEnable(GL_DEPTH_TEST);
-
+	glfwSwapInterval(1);
 	int widthImg, heightImg, nrChannels;
 	unsigned char* imageIcon = stbi_load("Logo.png", &widthImg, &heightImg, &nrChannels, 0);
 	if (imageIcon)
@@ -70,8 +70,19 @@ void Tsrt::Engine::runEngine()
 		std::string key = this->m_inputHandler->keyPressed();
 		std::transform(key.begin(), key.end(), key.begin(), ::toupper);
 		
-		if (std::strcmp(key.c_str(), "ESCAPE") == 0) glfwSetWindowShouldClose(this->m_window, true);
+		this->m_keys = splitKeys(key);
 
+		for (const auto& m_key : m_keys) std::cout << m_key << std::endl;
+
+		float crntTime = glfwGetTime();
+		this->m_deltaTime = crntTime - this->m_preTime;
+		this->m_preTime = crntTime;
+
+		if (key.find(" ESCAPE 21") != std::string::npos) glfwSetWindowShouldClose(this->m_window, true);
+
+		this->m_camera->moveAround(key, this->m_deltaTime);
+
+		std::cout << key << std::endl;
 		glClearColor(0.2, 0.1, 0.3, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -101,4 +112,16 @@ void Tsrt::Engine::destroyEngine()
 	glfwDestroyWindow(this->m_window);
 	this->m_window= 0;
 	glfwTerminate();
+}
+
+std::vector<std::string> Tsrt::Engine::splitKeys(const std::string& input)
+{
+	std::vector<std::string> res;
+	std::istringstream stream(input);
+	std::string word;
+
+	while (stream >> word) res.push_back(word);
+
+
+	return res;
 }
