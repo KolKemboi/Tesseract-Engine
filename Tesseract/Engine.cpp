@@ -34,6 +34,10 @@ void Tsrt::Engine::initEngine()
 	glViewport(0, 0, static_cast<unsigned int>(this->m_width), static_cast<unsigned int>(this->m_height));
 	glEnable(GL_DEPTH_TEST);
 	glfwSwapInterval(1);
+
+	this->m_Interface = std::make_shared<tsrtUI>(this->m_window);
+	this->m_propertiesPanel = std::make_shared<PropertiesPanel>();
+
 	int widthImg, heightImg, nrChannels;
 	unsigned char* imageIcon = stbi_load("Logo.png", &widthImg, &heightImg, &nrChannels, 0);
 	if (imageIcon)
@@ -53,22 +57,6 @@ void Tsrt::Engine::initEngine()
 
 	this->m_tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj",
 		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
-	
-	this->m_plane = std::make_shared<Model>("TsrtAssets/plane.obj",
-		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
-	
-	this->m_spotLight= std::make_shared<Model>("TsrtAssets/spotlight.obj",
-		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
-	
-	this->m_sunLight= std::make_shared<Model>("TsrtAssets/sun.obj",
-		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
-	
-	this->m_pointLight= std::make_shared<Model>("TsrtAssets/pointlight.obj",
-		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
-
-	this->m_defaultScene = std::make_shared<Model>("TsrtAssets/default scene.obj",
-		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
-
 		
 	this->m_inputHandler = std::make_shared<KeyboardInputs>(this->m_window);
 	this->m_inputHandler->callBackFunction();
@@ -98,12 +86,19 @@ void Tsrt::Engine::runEngine()
 		glClearColor(0.2, 0.1, 0.3, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//this->m_plane->DrawModel(*this->m_camera, glm::vec3(0.0, 0.0, 0.0));
-		this->m_pointLight->DrawModel(*this->m_camera, glm::vec3(0.0, 10.0, 0.0));
-		//this->m_tesseract->DrawModel(*this->m_camera, glm::vec3(0.0, -1.0, 0.0));
+		this->m_tesseract->DrawModel(*this->m_camera);
 		
-		
-		this->m_defaultScene->DrawModel(*this->m_camera, glm::vec3(0.0f, -10.0f, 0.0f));
+		this->m_Interface->createNewFrame();
+		this->m_Interface->setDockable();
+
+
+		ImGui::Begin("Scene");
+
+		ImGui::End();
+
+		this->m_propertiesPanel->RenderPropertiesPanel();
+
+		this->m_Interface->render();
 
 		glfwSwapBuffers(this->m_window);
 		glfwPollEvents();
@@ -125,6 +120,7 @@ CAMERA POS => Z DIST => 12
 void Tsrt::Engine::destroyEngine()
 {
 	this->m_inputHandler->KeyboardInputsDestroyer();
+	this->m_Interface->DestroyInstance();
 	glfwDestroyWindow(this->m_window);
 	this->m_window= 0;
 	glfwTerminate();

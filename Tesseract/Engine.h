@@ -9,6 +9,9 @@
 #include "ToolBox/Inputs.h"
 #include "ToolBox/Camera.h"
 
+#include "UI/TsrtsUI.hpp"
+#include "UI/PropertiesPanel.hpp"
+
 #include "tspch.h"
 
 namespace Tsrt
@@ -22,7 +25,7 @@ namespace Tsrt
 
 	private:
 		GLFWwindow* m_window;
-		unsigned int m_width = 800, m_height = 800;
+		unsigned int m_width = 1280, m_height = 1024;
 		void initEngine();
 		void runEngine();
 		void destroyEngine();
@@ -33,12 +36,8 @@ namespace Tsrt
 		float m_deltaTime = 0;
 		std::shared_ptr<KeyboardInputs> m_inputHandler;
 		std::shared_ptr<Model> m_tesseract;
-		std::shared_ptr<Model> m_cube;
-		std::shared_ptr<Model> m_defaultScene;
-		std::shared_ptr<Model> m_plane;
-		std::shared_ptr<Model> m_pointLight;
-		std::shared_ptr<Model> m_sunLight;
-		std::shared_ptr<Model> m_spotLight;
+		std::shared_ptr<tsrtUI> m_Interface;
+		std::shared_ptr<PropertiesPanel> m_propertiesPanel;
 		std::shared_ptr<Camera> m_camera;
 	};
 }
