@@ -53,6 +53,18 @@ void Tsrt::Engine::initEngine()
 
 	this->m_tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj",
 		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
+	
+	this->m_plane = std::make_shared<Model>("TsrtAssets/plane.obj",
+		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
+	
+	this->m_spotLight= std::make_shared<Model>("TsrtAssets/spotlight.obj",
+		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
+	
+	this->m_sunLight= std::make_shared<Model>("TsrtAssets/sun.obj",
+		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
+	
+	this->m_pointLight= std::make_shared<Model>("TsrtAssets/pointlight.obj",
+		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
 
 	this->m_defaultScene = std::make_shared<Model>("TsrtAssets/default scene.obj",
 		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
@@ -78,7 +90,7 @@ void Tsrt::Engine::runEngine()
 		this->m_deltaTime = crntTime - this->m_preTime;
 		this->m_preTime = crntTime;
 
-		if (key.find(" ESCAPE 21") != std::string::npos) glfwSetWindowShouldClose(this->m_window, true);
+		if (key.find(" ESCAPE ") != std::string::npos) glfwSetWindowShouldClose(this->m_window, true);
 
 		this->m_camera->moveAround(key, this->m_deltaTime);
 
@@ -86,8 +98,12 @@ void Tsrt::Engine::runEngine()
 		glClearColor(0.2, 0.1, 0.3, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//this->m_tesseract->DrawModel(*this->m_camera);
-		this->m_defaultScene->DrawModel(*this->m_camera);
+		//this->m_plane->DrawModel(*this->m_camera, glm::vec3(0.0, 0.0, 0.0));
+		this->m_pointLight->DrawModel(*this->m_camera, glm::vec3(0.0, 10.0, 0.0));
+		//this->m_tesseract->DrawModel(*this->m_camera, glm::vec3(0.0, -1.0, 0.0));
+		
+		
+		this->m_defaultScene->DrawModel(*this->m_camera, glm::vec3(0.0f, -10.0f, 0.0f));
 
 		glfwSwapBuffers(this->m_window);
 		glfwPollEvents();

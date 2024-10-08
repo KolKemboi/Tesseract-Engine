@@ -7,11 +7,11 @@ Tsrt::Model::Model(std::string const& path, const char* vertexFile, const char* 
 	this->loadModel(path);
 }
 
-void Tsrt::Model::DrawModel(Camera& camera)
+void Tsrt::Model::DrawModel(Camera& camera, glm::vec3 modelPos)
 {
 	for (unsigned int i = 0; i < this->m_meshes.size(); i++)
 	{
-		this->m_meshes[i].DrawMesh(camera);
+		this->m_meshes[i].DrawMesh(camera, modelPos);
 	}
 }
 

@@ -13,7 +13,7 @@ CAMERA POS => Z DIST => 12
 
 Tsrt::Camera::Camera()
 {
-	this->m_pos = glm::vec3(8.0f, 7.0f, 12.0f);
+	this->m_pos = glm::vec3(0.0f, 7.0f, 16.0f);
 	this->m_right = glm::vec3(1.0f, 0.0f, 0.0f);
 	this->m_up = glm::vec3(0.0f, 1.0f, 0.0f);
 	this->m_front = glm::vec3(0.0f, 0.0f, -1.0f);

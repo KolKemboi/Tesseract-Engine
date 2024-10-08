@@ -35,6 +35,10 @@ namespace Tsrt
 		std::shared_ptr<Model> m_tesseract;
 		std::shared_ptr<Model> m_cube;
 		std::shared_ptr<Model> m_defaultScene;
+		std::shared_ptr<Model> m_plane;
+		std::shared_ptr<Model> m_pointLight;
+		std::shared_ptr<Model> m_sunLight;
+		std::shared_ptr<Model> m_spotLight;
 		std::shared_ptr<Camera> m_camera;
 	};
 }
