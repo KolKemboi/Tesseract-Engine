@@ -155,6 +155,8 @@
     <ClInclude Include="ToolBox\Model.h" />
     <ClInclude Include="ToolBox\Shader.h" />
     <ClInclude Include="tspch.h" />
+    <ClInclude Include="UI\PropertiesPanel.hpp" />
+    <ClInclude Include="UI\TsrtsUI.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />

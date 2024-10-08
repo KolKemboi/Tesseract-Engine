@@ -26,7 +26,7 @@ namespace Tsrt
 			const char* vertexFile, const char* fragmentFile);
 
 		void MeshDestroyer();
-		void DrawMesh(Camera& camera, glm::vec3 modelPos);
+		void DrawMesh(Camera& camera);
 
 	private:
 		unsigned int m_vbo, m_ebo;
