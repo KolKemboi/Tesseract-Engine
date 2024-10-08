@@ -22,11 +22,11 @@ void Tsrt::Mesh::MeshDestroyer()
 	this->m_vao = 0;
 }
 
-void Tsrt::Mesh::DrawMesh(Camera& camera)
+void Tsrt::Mesh::DrawMesh(Camera& camera, glm::vec3 modelPos)
 {
 	camera.setPerspective(*this->m_meshShader, 800, 800);
 	camera.setView(*this->m_meshShader);
-	this->setModelMatrix(glm::vec3(0.0f, 0.0f, 0.0f),glm::vec3(0.0f, 0.0f, 0.0f),glm::vec3(1.0f),
+	this->setModelMatrix(modelPos, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f),
 		*this->m_meshShader);
 
 	this->m_meshShader->useShader();
