@@ -26,7 +26,7 @@ namespace Tsrt
 			const char* vertexFile, const char* fragmentFile);
 
 		void MeshDestroyer();
-		void DrawMesh(Camera& camera);
+		void DrawMesh(Camera& camera, unsigned int width, unsigned int height);
 
 	private:
 		unsigned int m_vbo, m_ebo;
