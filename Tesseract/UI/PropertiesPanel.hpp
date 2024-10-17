@@ -16,6 +16,8 @@ namespace Tsrt
 		void renderPropertiesPanel()
 		{
 			ImGui::Begin("Properties");
+			ImGui::Button("Load", ImVec2(80, 20));
+			ImGui::Button("Save", ImVec2(80, 20));
 			ImGui::End();
 		}
 	};
