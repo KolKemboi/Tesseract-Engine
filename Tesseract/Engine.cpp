@@ -54,18 +54,22 @@ void Tsrt::Engine::initEngine()
 	{
 		std::cerr << "FAILED::ICON_LOADING" << std::endl;
 	}
+	/*this->m_Models.emplace_back("TsrtAssets/Tesseract.obj",
+		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");*/
 
-	this->m_tesseract = std::make_shared<Model>("TsrtAssets/Tesseract.obj",
-		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
-	
-	this->m_defaultScene = std::make_shared<Model>("TsrtAssets/default scene.obj",
-		"ToolBox/Shaders/model.vert", "ToolBox/Shaders/model.frag");
-		
+	this->m_Models.emplace_back("TsrtAssets/default scene.obj",
+		this->m_basicVertexShader, this->m_basicFragmentShader);
 	this->m_inputHandler = std::make_shared<KeyboardInputs>(this->m_window);
 	this->m_inputHandler->callBackFunction();
 	this->m_camera = std::make_shared<Camera>();
 }
 
+
+/*
+Features to add
+Importing models, 
+Saving files
+*/
 void Tsrt::Engine::runEngine()
 {
 	while (!glfwWindowShouldClose(this->m_window))
@@ -73,7 +77,6 @@ void Tsrt::Engine::runEngine()
 		std::string key = this->m_inputHandler->keyPressed();
 		std::transform(key.begin(), key.end(), key.begin(), ::toupper);
 		
-		this->m_keys = splitKeys(key);
 
 		for (const auto& m_key : m_keys) std::cout << m_key << std::endl;
 
@@ -109,7 +112,10 @@ void Tsrt::Engine::runEngine()
 		glClearColor(0.2, 0.1, 0.3, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		this->m_defaultScene->DrawModel(*this->m_camera, static_cast<GLsizei>(viewportWidth), static_cast<GLsizei>(viewportHeight));
+		for (unsigned int i = 0; i < this->m_Models.size(); i++)
+		{
+			this->m_Models[i].DrawModel(*this->m_camera, static_cast<GLsizei>(viewportWidth), static_cast<GLsizei>(viewportHeight));
+		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		ImVec2 uv0(0.0f, 1.0f);
@@ -129,17 +135,6 @@ void Tsrt::Engine::runEngine()
 
 	}
 }
-
-/*
-spotlight default => 0.5
-pointlight default => 0.3
-sun default => 1
-
-
-CAMERA POS => Z DIST => 12
-			=> X DIST =>8
-			=> Y DIST => 7
-*/
 
 void Tsrt::Engine::destroyEngine()
 {
@@ -173,16 +168,4 @@ void Tsrt::Engine::createframebuffer(int width, int height)
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-}
-
-std::vector<std::string> Tsrt::Engine::splitKeys(const std::string& input)
-{
-	std::vector<std::string> res;
-	std::istringstream stream(input);
-	std::string word;
-
-	while (stream >> word) res.push_back(word);
-
-
-	return res;
 }
