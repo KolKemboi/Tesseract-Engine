@@ -1,0 +1,11 @@
+The Tesseract architecture.
+
+
+App.cpp
+	Core
+		Sandbox
+		Window Manager
+	Asset Manager
+		Model loader
+		Texture loader
+	
